@@ -17,6 +17,14 @@ const errorHandler = (error, req, res, next) => {
     return res.status(400).send({ error: 'username must be email' })
   }
 
+  if (error.message === 'Validation error: Validation min on year failed') {
+    return res.status(400).send({ error: 'year must be after 1990' })
+  }
+
+  if (error.message === 'Validation error: Validation max on year failed') {
+    return res.status(400).send({ error: 'year cannot be in the future' })
+  }
+
   next(error)
 }
 
