@@ -9,8 +9,12 @@ const errorHandler = (error, req, res, next) => {
     return res.status(400).send({ error: 'username must be unique' })
   }
 
-  if (error.message.startsWith('notNull Violation')) {
+  if (error.message.startsWith('notNull Violation: user')) {
     return res.status(400).send({ error: 'username or name cannot be empty' })
+  }
+
+  if (error.message.startsWith('notNull Violation: readinglist')) {
+    return res.status(400).send({ error: 'blogId or userId cannot be empty' })
   }
 
   if (error.message === 'Validation error: Validation isEmail on username failed') {
