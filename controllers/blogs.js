@@ -3,8 +3,7 @@ const { Op } = require('sequelize')
 
 const tokenExtractor = require('../middleware/tokenExtractor')
 
-const { Blog } = require('../models')
-const { User } = require('../models')
+const { Blog, User } = require('../models')
 
 const blogFinder = async (req, res, next) => {
   req.blog = await Blog.findByPk(req.params.id)
